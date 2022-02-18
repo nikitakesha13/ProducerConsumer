@@ -4,7 +4,7 @@ run:
 	./UdodenkoN_proj1
 
 UdodenkoN_proj1: UdodenkoN_proj1.c
-	gcc -o UdodenkoN_proj1 UdodenkoN_proj1.c -lrt
+	gcc -o UdodenkoN_proj1 UdodenkoN_proj1.c -lpthread -lrt
 
 clean:
 	rm -rf *.o UdodenkoN_proj1
