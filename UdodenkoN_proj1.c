@@ -51,6 +51,10 @@ void producer(int process_num){
         sprintf(timestamp, "%ld --- ", tv.tv_usec);
         strcat(message, timestamp);
 
+        // Read the message 
+        // print the message from the consumer x
+        // Send the message to the Consumer x
+
         int status = mq_send(mqd, message, MSG_SIZE, 0);
         // if (status == -1){
         //     printf("PRODUCER %d: message is not sent\n\n", process_num);
@@ -62,6 +66,8 @@ void producer(int process_num){
 
         sem_post(mutex_prod);
         sem_post(full);
+        
+        sleep(0.5);
     }
 }
 
@@ -78,6 +84,9 @@ void consumer(int process_num){
 
         sem_wait(full);
         sem_wait(mutex_cons);
+
+        // Consumer needs to send something to producer 
+        // The same consumer recieves the message producer x
 
         ssize_t num_bytes_received = mq_receive(mqd, message, MSG_SIZE, 0);
         
