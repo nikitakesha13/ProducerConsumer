@@ -88,6 +88,8 @@ void producer(int process_num){
         sleep(1);
 
         sem_post(mutex_prod);
+
+        sleep(0.01);
     }
 
     exit(0);
@@ -129,8 +131,6 @@ void consumer(int process_num){
         
         sleep(1);
 
-        sem_post(mutex_cons);
-
         if (num_bytes_received == -1){
             printf("CONSUMER %d: message is not received\n", process_num);
         }
@@ -139,6 +139,10 @@ void consumer(int process_num){
         }
 
         printf("-------------------------------------\n\n");
+
+        sem_post(mutex_cons);
+
+        sleep(0.01);
     }
 
     exit(0);
