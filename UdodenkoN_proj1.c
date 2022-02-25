@@ -89,7 +89,7 @@ void producer(int process_num){
 
         sem_post(mutex_prod);
 
-        sleep(0.01);
+        sleep(0.5);
     }
 
     exit(0);
@@ -142,7 +142,7 @@ void consumer(int process_num){
 
         sem_post(mutex_cons);
 
-        sleep(0.01);
+        sleep(0.5);
     }
 
     exit(0);
@@ -225,7 +225,7 @@ int main(){
     }
     mq_close(mqd_prod);
 
-    for (int i = 0; i < 5; i++){
+    for (int i = 0; i < 10; i++){
         pid = fork();
         if (pid == 0){
             // Child Process
